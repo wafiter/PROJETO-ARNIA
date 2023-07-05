@@ -1,0 +1,73 @@
+.formulario{
+    background-color: white;
+    margin: 0 auto;
+    margin-top: 170px;
+    padding: 30px;
+}
+
+.conteiner{
+    font-family: "Poppins", sans-serif;
+}
+
+.inputLog{
+    width:100%;
+    border-radius: 10px;
+    padding: 10px;
+    border: solid 1px;
+    border-color: #d1cece;
+    font-size: small;
+}
+#btnLog{
+    width: 100%;
+    background-color: #482D83;
+    color: white;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 10px;
+    border: none;
+    font-size:small;
+}
+.labelPequenas{
+    font-size: xx-small;
+}
+label{
+    font-size: small;
+    margin-top: 20px;
+    color: #424242;
+}
+.sectionLembrarSenha{
+    display: flex;
+    justify-content: space-between;
+
+}
+.title{
+    font-family: 'Sora', sans-serif;
+    font-weight: bolder;
+    font-size: 28px;
+
+}
+#iconeEyBlock {
+    position: absolute;
+    top: 53.5%;
+    right: 580px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color:#ada8a8;
+    display: block;
+  }
+#iconeEyMostrar{
+    position: absolute;
+    top: 53.5%;
+    right: 580px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color:#ada8a8;
+    display: none;
+}
+#titleConteudo{
+    font-family: 'Sora', sans-serif;
+    font-size: 10;
+}
+
+
+  
