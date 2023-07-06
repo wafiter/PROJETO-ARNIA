@@ -3,10 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mentores</title>
-
+    <title>Novo Mentor</title>
+    <link rel="stylesheet" href="/CSS/mentore.css">
     <link rel="stylesheet" href="/CSS/arquivo.css" />
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -34,7 +35,7 @@
     <div class="conteiner col-12">
       <div class="menu col-2">
         <div class="title">
-          <span id="mentor">mentor</span><span id="class">class</span>
+          <span class="mentor">mentor</span><span class="class">class</span>
         </div>
 
         <div class="iMenu">
@@ -96,7 +97,7 @@
       </div>
       <div class="conteudo col-10">
         <div class="usuario">
-          <span id="userIcon"
+          <span class="userIcon"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               width="45"
@@ -109,20 +110,31 @@
               <path
                 fill-rule="evenodd"
                 d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/></svg></span>
-          <div id="dadosUser">
-            <div id="nomeUser">nome do user</div>
-            <div id="emailUser">email@email.com</div>
+          <div class="dadosUser">
+            <div class="nomeUser">nome do user</div>
+            <div class="emailUser">email@email.com</div>
           </div>
         </div>
         <div>
-          <h3 id="titleConteudo">Mentores</h3>
+          <h3 class="titleConteudo"> <button id="voltar"><span class="material-icons arrow">arrow_back</span></button>Novo mentor</h3>
         </div>
         <div class="conteudoExibido">
-          <div class="superior">
-            <input id="inputPesqisar" type="text" placeholder="Pesquise uma palavra-chave">
-            <button id="btnAdd">nome do btn</button>
-
-          </div>
+            <div class="superiorNm">
+                <p>Dados</p>
+              </div>
+              <form id="formNovoMentor">
+                <section>
+                    <label for="nome">Nome</label>
+                    <input type="text" name="nome" id="nomeDoMentor">                    
+                </section>
+                <section>
+                    <label for="email">E-mail</label>
+                    <input type="email" id="emailDoMentor">
+                </section>
+                <section>
+                    <button type="submit" id="btnNovoMentor"> Salvar </button>
+                </section>
+              </form>
           
         </div>
 

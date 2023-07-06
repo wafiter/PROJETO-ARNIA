@@ -1,0 +1,98 @@
+#tabelaMentores {
+  width: 100%;
+  border-collapse: separate; /* Separa as bordas das células */
+  border-spacing: 0 5px;
+}
+
+.nome {
+  border-top-left-radius: 10px;
+  width: 45%;
+}
+.e-mail {
+  width: 45%;
+}
+.ações {
+  border-top-right-radius: 10px;
+  width: 10%;
+}
+th {
+  background-color: #482d83;
+  padding: 15px;
+  color: white;
+  font-weight: 100;
+}
+tr{
+    margin-bottom: 5px;
+}
+td{
+    padding: 15px;
+    background-color: #F5F5F5;
+   
+}
+.iconsCaneta{
+    margin-right: 10px;
+    background-color: white;
+    border-radius: 100%;
+    padding: 3px;
+    color: rgb(22, 90, 218);
+}
+.iconsLixeira{
+    margin-right: 10px;
+    background-color: white;
+    border-radius: 100%;
+    padding: 3px;
+    color: rgb(235, 54, 54);
+}
+/*novo mentor*/
+
+#voltar{
+    border: none;
+    border-radius: 100%;
+    margin-right: 10px;
+    }
+.arrow{
+    margin-top: 7px;
+    color: #9e9e9e;
+}
+.superiorNm{
+    color: #482d83;
+    border-bottom: solid 2px #BDBDBD;
+}
+#formNovoMentor{
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    
+}
+#btnNovoMentor {
+    width: 300px;
+    background-color: #482d83;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    margin-top: 20px;
+}
+#emailDoMentor{
+    width: 90%;
+    padding: 5px;
+    border-radius: 10px;
+    border: solid 0.5px #9e9e9e;
+}
+#nomeDoMentor {
+    width: 90%;
+    padding: 5px;
+    border-radius: 10px;
+    border: solid 0.5px #9e9e9e;
+
+}
+
+section{
+        
+        width: 50%;
+}
+label{
+    font-size: small;
+    color: #9e9e9e;
+}
