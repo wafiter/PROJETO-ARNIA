@@ -30,22 +30,24 @@ td{
    
 }
 .iconsCaneta{
-    margin-right: 10px;
+    margin-right: 8px;
     background-color: white;
     border-radius: 100%;
     padding: 3px;
     color: rgb(22, 90, 218);
+    border: none;
 }
 .iconsLixeira{
-    margin-right: 10px;
+    margin-right: 8px;
     background-color: white;
     border-radius: 100%;
     padding: 3px;
     color: rgb(235, 54, 54);
+    border: none;
 }
 /*novo mentor*/
 
-#voltar{
+.voltar{
     border: none;
     border-radius: 100%;
     margin-right: 10px;
@@ -58,14 +60,14 @@ td{
     color: #482d83;
     border-bottom: solid 2px #BDBDBD;
 }
-#formNovoMentor{
+.formMentor{
     width: 60%;
     display: flex;
     flex-wrap: wrap;
     margin-top: 20px;
     
 }
-#btnNovoMentor {
+.btnNovoMentor {
     width: 300px;
     background-color: #482d83;
     color: white;
@@ -74,13 +76,13 @@ td{
     border-radius: 20px;
     margin-top: 20px;
 }
-#emailDoMentor{
+.emailDoMentor{
     width: 90%;
     padding: 5px;
     border-radius: 10px;
     border: solid 0.5px #9e9e9e;
 }
-#nomeDoMentor {
+.nomeDoMentor {
     width: 90%;
     padding: 5px;
     border-radius: 10px;

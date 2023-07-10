@@ -1,0 +1,37 @@
+{
+  "mentores": [
+    {
+      "nome": "leticia",
+      "email": "leticia@gmail.com",
+      "id": 1
+    },
+    {
+      "nome": "Lucas perdigão",
+      "email": "lucas@gmail.com",
+      "id": 2
+    },
+    {
+      "nome": "Artur",
+      "email": "artur@gmail.com",
+      "id": 3
+    },
+    {
+      "nome": "Marcio",
+      "email": "marcio@gmail.com",
+      "id": 4
+    },
+    {
+      "nome": "editei e salvei",
+      "email": "wafiter@gmail.com",
+      "id": 5
+    }
+  ],
+  "usuarios": [
+    {
+      "nome": "wafiter",
+      "email": "wafiter@gmail.com",
+      "senha": 123456,
+      "id": 1
+    }
+  ]
+}
