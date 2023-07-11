@@ -30,23 +30,24 @@
   color: white;
   font-weight: 900;
 }
-.botao-selecionado{
-  align-items: center;
-  margin-bottom: 10px;
-  display: flex;
-  color: white;
-  background-color: #7682c1;
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
-  width: 100%;
-}
+
 .iMenu {
   align-items: center;
   margin-bottom: 10px;
   display: flex;
   color: white;
   background-color: #482d83;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+}
+.botao-selecionado{
+  align-items: center;
+  margin-bottom: 10px;
+  display: flex;
+  color: white;
+  background-color: #7682c1;
   padding: 10px;
   border-radius: 5px;
   border: none;
@@ -115,6 +116,6 @@
   color: white;
   position: absolute;
   margin-top: 12px;
-  margin-left:  935px;
+  margin-left:  945px;
 }
 

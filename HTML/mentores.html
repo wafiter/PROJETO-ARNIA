@@ -7,7 +7,7 @@
 
     <script defer src="/JS/app.js"></script>
 
-    <link rel="stylesheet" href="/CSS/mentore.css" />
+    <link rel="stylesheet" href="/CSS/mentores.css" />
     <link rel="stylesheet" href="/CSS/arquivo.css" />
 
     <link
@@ -37,14 +37,14 @@
       crossorigin="anonymous"
     />
   </head>
-  <body onload="buscarMentores()">
+  <body class="mentores"  onload="buscarMentores()">
     <div class="conteiner col-12">
       <div class="menu col-2">
         <div class="title">
           <span class="mentor">mentor</span><span class="class">class</span>
         </div>
 
-        <button id= "mentores" onclick="mudarPag('mentores.html')" class="iMenu">
+        <button onclick="mudarPag('mentores.html')" class="iMenu">
           <span class="iconeMenu"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +57,7 @@
                 d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/></svg></span>
           <div>Mentores</div>
         </button>
-        <button class="iMenu">
+        <button onclick="mudarPag('mentorias.html')" class="iMenu">
           <span class="iconeMenu"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
@@ -100,6 +100,7 @@
           <div>Alunos</div>
         </button>
       </div>
+
       <div class="conteudo col-10">
         <div class="usuario">
           <span class="userIcon"
@@ -120,17 +121,18 @@
             <div class="emailUser">email@email.com</div>
           </div>
         </div>
+        <div id="conteudoMentores">
         <div>
           <h3 class="titleConteudo">Mentores</h3>
         </div>
-        <div class="conteudoExibido">
+        <div class="conteudoExibido" >
           <div class="superior">
             <input
               class="inputPesqisar"
               type="text"
               placeholder="Pesquise uma palavra-chave"
             />
-            <button onclick="mudarPag('novoMentor.html')" class="btnAdd">Novo Mentor</button>
+            <button onclick="abriNovoMentor()" class="btnAdd">Novo Mentor</button>
             <svg
               class="lupa"
               xmlns="http://www.w3.org/2000/svg"
@@ -153,8 +155,7 @@
               class="bi bi-plus-lg"
               viewBox="0 0 16 16"
             >
-              <path
-                fill-rule="evenodd"
+              <path fill-rule="evenodd"
                 d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
               />
             </svg>
@@ -164,7 +165,7 @@
               <tr>
                 <th class="nome">Nome</th>
                 <th class="email">E-mail</th>
-                <th class="ações">Ações</th>
+                <th class="acoes">Ações</th>
               </tr>
               
             </table>
