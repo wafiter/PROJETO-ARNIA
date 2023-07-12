@@ -5,7 +5,28 @@ const mudarPag = (param) => {
   window.location = param;
 };
 
-//                                 Mentores
+//       Mostra menu selecionado
+
+const onloadMenu = () => {
+  let currentPage = document.body.className;
+  let menuButtons = document.getElementsByClassName("iMenu");
+
+  console.log(menuButtons);
+
+  for (let i = 0; i < menuButtons.length; i++) {
+    let button = menuButtons[i];
+
+    if (button.getAttribute("onclick").includes(currentPage)) {
+      button.classList.add("botao-selecionado");
+      break;
+    }
+  }
+};
+
+onloadMenu();
+
+
+//                             Mentores
 
 //- abrir pag novo mentor
 
@@ -36,9 +57,7 @@ const abriNovoMentor = () => {
 </form>`;
 
   const formNovoMentor = document.getElementById("formNovoMentor");
-
-  console.log(formNovoMentor);
-
+  
   if (formNovoMentor != null) {
     formNovoMentor.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -54,7 +73,7 @@ const abriNovoMentor = () => {
     });
   }
 
-  //- criar novo mentor
+  //- criar novo mentor na API
 
   const criarMentor = async (mentorAdd) => {
     try {
@@ -72,6 +91,7 @@ const abriNovoMentor = () => {
     }
   };
 };
+//- buscar mentores na API e exibir tabela de mentores
 
 const buscarMentores = async () => {
   try {
@@ -85,11 +105,17 @@ const buscarMentores = async () => {
 };
 const fazerTabelaMentores = (mentores) => {
   let tabela = document.getElementById("tabelaMentores");
-  tabela.innerHTML = ''
+  
+  tabela.innerHTML = `<tr>
+  <th class="nome">Nome</th>
+  <th class="email">E-mail</th>
+  <th class="acoes">Ações</th>
+</tr>`
   mentores.forEach((element) => {
     tabela.innerHTML =
       tabela.innerHTML +
-      ` <tr>
+      `
+     <tr>
     <td>${element.nome}</td>
     <td>${element.email}</td>
     <td>
@@ -129,7 +155,7 @@ const getIdUrl = () => {
   id = params.get("id");
 };
 
-//envia e busca na api
+//enviar mentor editado na API
 
 const salvarMentorEditado = async (MentorEditado) => {
   await fetch(`http://localhost:3000/mentores/${id}`, {
@@ -152,7 +178,7 @@ const buscarMentorEditar = async (id) => {
   formDeEditarMtr(mentorEditavel);
 };
 
-//carrega e submit o formulario
+//carregar e submit o formulario do editar mentor
 
 const formEditarMt = document.getElementById("formEditarMentor");
 if (formEditarMt != null) {
@@ -180,23 +206,10 @@ const carregarEditarMentor = async () => {
   buscarMentorEditar(id);
 };
 
+//      MENTORIAS
 
-//          destacar menu
+//- criar nova mentorias
 
-const onloadMenu = () => {
-  let currentPage = document.body.className;
-  let menuButtons = document.getElementsByClassName("iMenu");
 
-  console.log(menuButtons);
 
-  for (let i = 0; i < menuButtons.length; i++) {
-    let button = menuButtons[i];
-
-    if (button.getAttribute("onclick").includes(currentPage)) {
-      button.classList.add("botao-selecionado");
-      break;
-    }
-  }
-};
-
-onloadMenu();
+//- Buscar as mentorias e inserir na tabela

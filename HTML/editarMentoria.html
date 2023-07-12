@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mentorias</title>
+    <title>Nova Mentoria</title>
 
     <script defer src="/JS/app.js"></script>
     
@@ -124,74 +124,36 @@
               </div>
             </div>
             <div>
-              <h3 class="titleConteudo">Mentorias</h3>
+              <h3 class="titleConteudo">Editar Mentoria</h3>
             </div>
             <div class="conteudoExibido" >
-              <div class="superior">
-                <input
-                  class="inputPesqisar"
-                  type="text"
-                  placeholder="Pesquise uma palavra-chave"
-                />
-                <button onclick="mudarPag('novaMentoria.html')" class="btnAdd">Nova Mentoria</button>
-                <svg
-                  class="lupa"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  class="bi bi-search"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
-                  />
-                </svg>
-                <svg
-                  class="add"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  fill="currentColor"
-                  class="bi bi-plus-lg"
-                  viewBox="0 0 16 16"
-                >
-                  <path fill-rule="evenodd"
-                    d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
-                  />
-                </svg>
+              <div class="superiorNm">
+                <p>Dados</p>
               </div>
-              <div class="tabela">
-                <table id="tabelaMentorias">
-                  <tr>
-                    <th class="tituloMentoria">Titulo da mentoria</th>
-                    <th class="mentorM">Mentor</th>
-                    <th class="status">Status</th>
-                    <th class="acoes">Ações</th>
-                  </tr>
-                  <tr>
-                    <td class="tituloMentoria">gerenciamento de status globais no java script com react ...</td>
-                    <td class="mentorM">Mentor</td>
-                    <td class="status"><p class="Ativo">Ativo</p></td>
-                    <td class="acoes">
-                      <button onclick="editarMentoria(${element.id})" class="material-icons iconsCaneta"> create </button>
-                      <button class="material-icons iconsLixeira" onclick="deletarMentoria(${element.id})"> delete </button>
-                    </td>
-                    
-                  </tr>
-                  <tr>
-                    <td class="tituloMentoria">gerenciamento de status globais no java script com react ...</td>
-                    <td class="mentorM">Mentor</td>
-                    <td class="status"><p class="Inativo">Inativo</p></td>
-                    <td class="acoes">
-                      <button onclick="editarMentoria(${element.id})" class="material-icons iconsCaneta"> create </button>
-                      <button class="material-icons iconsLixeira" onclick="deletarMentoria(${element.id})"> delete </button>
-                    </td>
-                    
-                  </tr>
-                  
-                </table>
-              </div>
+              <form class="formMentoria" id="formEditarMentoria">
+                <section class="sectionTitulo" >
+                  <label class="label" for="tituloMentoriaE">Titulo da mentoria</label>
+                  <input type="text" name="nome" id="tituloMentoriaE" class="nomeDaMentoria" />
+                </section>
+                <section class="sectionMentor">
+                  <label class="label" for="selectMentorE">Mentor:</label>
+                  <select id="selectMentoresE" class="selectMentor">
+                    <option disabled selected value="null">Nenhum Mentor selecionado</option>
+                    <option value="mentor">mentor</option>
+                  </select>
+                </section>
+                <section class="sectionComCheck" >
+                  <label class="label">Status</label>
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="switchNovaMentoria" checked >
+                    <label class="form-check-label" for="switchNovaMentoria"> Ativo</label>
+                  </div>
+                </section>
+                <section>
+                  <button type="submit" id="btnEditarMentoria" class="btnNovoMentor">Salvar Mudanças</button>
+                </section>
+              </form>
+             
             </div>
           </div>
         </div>
