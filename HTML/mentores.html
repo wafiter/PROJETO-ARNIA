@@ -37,7 +37,7 @@
       crossorigin="anonymous"
     />
   </head>
-  <body class="mentores"  onload="buscarMentores()">
+  <body class="mentores"  onload="PaginaDeMentores()">
     <div class="conteiner col-12">
       <div class="menu col-2">
         <div class="title">
@@ -127,7 +127,8 @@
         </div>
         <div class="conteudoExibido" >
           <div class="superior">
-            <input
+            <input 
+              id="pesquisarMentores"
               class="inputPesqisar"
               type="text"
               placeholder="Pesquise uma palavra-chave"

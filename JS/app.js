@@ -25,7 +25,6 @@ const onloadMenu = () => {
 
 onloadMenu();
 
-
 //                             Mentores
 
 //- abrir pag novo mentor
@@ -57,7 +56,7 @@ const abriNovoMentor = () => {
 </form>`;
 
   const formNovoMentor = document.getElementById("formNovoMentor");
-  
+
   if (formNovoMentor != null) {
     formNovoMentor.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -91,26 +90,32 @@ const abriNovoMentor = () => {
     }
   };
 };
+
 //- buscar mentores na API e exibir tabela de mentores
 
-const buscarMentores = async () => {
+let mentores;
+const PaginaDeMentores = async () => {
+  await buscarMentores();
+  fazerTabelaMentores(mentores);
+};
+
+const buscarMentores = async (parametro = null) => {
   try {
-    const mentoreApi = await fetch("http://localhost:3000/mentores");
-    const mentores = await mentoreApi.json();
-    console.log(mentores)
-    fazerTabelaMentores(mentores);
+    const mentoresApi = await fetch("http://localhost:3000/mentores");
+    mentores = await mentoresApi.json();
+    return mentores
   } catch (error) {
-    window.alert("não foi possivel carregar a pagina");
+    console.log(error);
   }
 };
 const fazerTabelaMentores = (mentores) => {
   let tabela = document.getElementById("tabelaMentores");
-  
+
   tabela.innerHTML = `<tr>
   <th class="nome">Nome</th>
   <th class="email">E-mail</th>
   <th class="acoes">Ações</th>
-</tr>`
+</tr>`;
   mentores.forEach((element) => {
     tabela.innerHTML =
       tabela.innerHTML +
@@ -129,8 +134,8 @@ const fazerTabelaMentores = (mentores) => {
 //- deletar Mentor
 
 const deletarMentor = async (id) => {
-  try { 
-    console.log('deletou')
+  try {
+    console.log("deletou");
     await fetch(`http://localhost:3000/mentores/${id}`, {
       method: "DELETE",
       headers: {
@@ -172,7 +177,6 @@ const salvarMentorEditado = async (MentorEditado) => {
 
 const buscarMentorEditar = async (id) => {
   const resposta = await fetch(`http://localhost:3000/mentores/${id}`);
-  console.log("indo na api");
   const mentorEditavel = await resposta.json();
 
   formDeEditarMtr(mentorEditavel);
@@ -184,7 +188,7 @@ const formEditarMt = document.getElementById("formEditarMentor");
 if (formEditarMt != null) {
   formEditarMt.addEventListener("submit", async (evt) => {
     evt.preventDefault();
-    console.log(formEditarMt);
+    
     let nome = formEditarMt.elements["nome"].value;
     let email = formEditarMt.elements["email"].value;
 
@@ -202,14 +206,212 @@ const formDeEditarMtr = async (mentorEditavel) => {
 
 const carregarEditarMentor = async () => {
   getIdUrl();
-
   buscarMentorEditar(id);
 };
 
 //      MENTORIAS
 
-//- criar nova mentorias
+let mentoriasApi
+
+const paginaMentorias = async () =>{
+  await buscarMentoriasApi()
+  fazerTabelaMentorias(mentoriasApi)  
+}
+//- busca mentorias na API
+
+const buscarMentoriasApi = async (parametro = null) => {
+  try {
+    const mentoriasSTR = await fetch("http://localhost:3000/mentorias");
+    mentoriasApi = await mentoriasSTR.json();
+    
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+//- Fazer tabela de mentorias 
+
+const fazerTabelaMentorias = (mentoriasApi) =>{
+  let tabelaMentorias = document.getElementById("tabelaMentorias")
+  tabelaMentorias.innerHTML = `<tr>
+  <th class="tituloMentoria">Titulo da mentoria</th>
+  <th class="mentorM">Mentor</th>
+  <th class="status">Status</th>
+  <th class="acoes">Ações</th>
+</tr>`
+  mentoriasApi.forEach((element) =>{
+    tabelaMentorias.innerHTML = tabelaMentorias.innerHTML + `
+    <tr>
+    <td class="tituloMentoria">${element.titulo}</td>
+    <td class="mentorM">${element.mentor}</td>
+    <td class="status"><p class="${element.status}">${element.status}</p></td>
+    <td class="acoes">
+      <button onclick="editarMentoria(${element.id})" class="material-icons iconsCaneta"> create </button>
+      <button class="material-icons iconsLixeira" onclick="deletarMentoria(${element.id})"> delete </button>
+    </td>
+    </tr>
+    `
+
+  })
+}
+//-Buscar mentores e colocar no select
+const construirselect = async () => {
+  await buscarMentores()
+  console.log(mentores)
+  fazerSelect(mentores)
+} 
+
+const selectMentores = document.getElementById("selectMentores");
+
+const fazerSelect = async (mentores) => {
+  
+  selectMentores.innerHTML = `<option disabled selected value="null">Nenhum Mentor selecionado</option>`;
+  mentores.forEach((element) => {
+    selectMentores.innerHTML = selectMentores.innerHTML + `<option value="${element.nome}">${element.nome}</option>`;
+  });
+};
+if (selectMentores != null) {
+    construirselect()
+}
+//- formulario de nova mentoria
+
+const mandarMentoriaApi = async (mentoria) => {
+  try {
+    await fetch("http://localhost:3000/mentorias", {
+    method: "POST",
+    headers: {
+      Accept: "application/json, text/plain, */*",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(mentoria),
+  });
+  window.alert('Metoria salva')
+      
+  } catch (error) {
+    window.alert("Erro ao cadastra a MENTORIA")    
+  }
+
+}
+
+const formNovaMentoria = document.getElementById('formNovaMentoria')
+
+if (formNovaMentoria != null) {
+  formNovaMentoria.addEventListener("submit", async (e) => {
+    e.preventDefault();
+   
+
+    const tituloMentoria = formNovaMentoria.elements["tituloMentoria"].value;
+    const mentor = formNovaMentoria.elements["selectMentores"].value;
+    let status = formNovaMentoria.elements["switchNovaMentoria"].checked
+    if(status == true){
+      status = 'Ativo'
+    }else{
+      status = 'Inativo'
+    }
+      const mentoria = {
+      titulo: tituloMentoria,
+      mentor: mentor,
+      status: status
+    }
+    mandarMentoriaApi(mentoria)
+
+    
+  });
+}
+
+//- Editar mentoria
+
+const editarMentoria = (id)=>{
+  window.location= `editarMentoria.html?id=${id}`
+ 
+}
+const PagianaEditarMentoria = () =>{
+  getIdUrl()
+  mentoriaEditApi(id)
+}
+
+const mentoriaEditApi = async (id) =>{
+  const resposta = await fetch(`http://localhost:3000/mentorias/${id}`);
+  const mentoriaEditavel = await resposta.json();
+
+  formDeEditarMtria(mentoriaEditavel);
+}
+
+//-submit do formulario de editar
+
+const formEditarMentoria = document.getElementById("formEditarMentoria");
+if (formEditarMentoria != null) {
+  formEditarMentoria.addEventListener("submit", async (evt) => {
+    evt.preventDefault();
+    
+    const tituloMentoria = formEditarMentoria.elements["tituloMentoria"].value;
+    const mentor = formEditarMentoria.elements["selectMentores"].value;
+    let status = formEditarMentoria.elements["switchNovaMentoria"].checked
+    if(status == true){
+      status = 'Ativo'
+    }else{
+      status = 'Inativo'
+    }
+      const mentoriaEditada = {
+      titulo: tituloMentoria,
+      mentor: mentor,
+      status: status
+    }
+   
+    salvarMentoriaEditada(mentoriaEditada);
+  });
+}
+//- salvar mentoria editada na API
+const salvarMentoriaEditada = async (mentoriaEditada) => {
+  await fetch(`http://localhost:3000/mentorias/${id}`, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json, text/plain, */*",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(mentoriaEditada),
+  });
+
+  window.location = "mentorias.html";
+
+}
+
+//- jogar dados no formulario de editar mentoria
+
+const formDeEditarMtria = async (mentoriaEditavel) =>{
+  document.getElementById('tituloMentoria').value = mentoriaEditavel.titulo
+  document.getElementById('selectMentores').value = mentoriaEditavel.mentor
+  if(mentoriaEditavel.status == 'Ativo'){
+    document.getElementById('switchNovaMentoria').checked = true
+  }else{
+    document.getElementById('switchNovaMentoria').checked = false
+  }
+ 
+}
+
+//- Deletar Mentoria
+
+const deletarMentoria = async (id) => {
+  try {
+    console.log("deletou");
+    await fetch(`http://localhost:3000/mentorias/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+      paginaMentorias()
+  ;
+  } catch (error) {
+    window.alert("FALHA AO DELETAR");
+  }
+
+}
 
 
 
-//- Buscar as mentorias e inserir na tabela
+
+
+
+
+

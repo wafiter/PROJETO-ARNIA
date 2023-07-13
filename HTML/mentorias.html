@@ -36,10 +36,11 @@
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
       crossorigin="anonymous"
     />
+    
 
 </head>
-<body class="mentorias">
-    <body class="mentores"  conload="buscarMentores()">
+<body class="mentorias" onload="paginaMentorias()">
+    
         <div class="conteiner col-12">
           <div class="menu col-2">
             <div class="title">
@@ -129,6 +130,7 @@
             <div class="conteudoExibido" >
               <div class="superior">
                 <input
+                  id="pesquisarMentorias"
                   class="inputPesqisar"
                   type="text"
                   placeholder="Pesquise uma palavra-chave"
@@ -163,32 +165,10 @@
               </div>
               <div class="tabela">
                 <table id="tabelaMentorias">
-                  <tr>
-                    <th class="tituloMentoria">Titulo da mentoria</th>
-                    <th class="mentorM">Mentor</th>
-                    <th class="status">Status</th>
-                    <th class="acoes">Ações</th>
-                  </tr>
-                  <tr>
-                    <td class="tituloMentoria">gerenciamento de status globais no java script com react ...</td>
-                    <td class="mentorM">Mentor</td>
-                    <td class="status"><p class="Ativo">Ativo</p></td>
-                    <td class="acoes">
-                      <button onclick="editarMentoria(${element.id})" class="material-icons iconsCaneta"> create </button>
-                      <button class="material-icons iconsLixeira" onclick="deletarMentoria(${element.id})"> delete </button>
-                    </td>
+                  
+                 
                     
-                  </tr>
-                  <tr>
-                    <td class="tituloMentoria">gerenciamento de status globais no java script com react ...</td>
-                    <td class="mentorM">Mentor</td>
-                    <td class="status"><p class="Inativo">Inativo</p></td>
-                    <td class="acoes">
-                      <button onclick="editarMentoria(${element.id})" class="material-icons iconsCaneta"> create </button>
-                      <button class="material-icons iconsLixeira" onclick="deletarMentoria(${element.id})"> delete </button>
-                    </td>
-                    
-                  </tr>
+                
                   
                 </table>
               </div>

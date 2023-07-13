@@ -38,9 +38,9 @@
     />
 
 </head>
-<body class="mentorias">
-    <body class="mentores"  conload="buscarMentores()">
-        <div class="conteiner col-12">
+<body class="mentorias" onload="PagianaEditarMentoria()" >
+  
+         <div class="conteiner col-12">
           <div class="menu col-2">
             <div class="title">
               <span class="mentor">mentor</span><span class="class">class</span>
@@ -124,7 +124,8 @@
               </div>
             </div>
             <div>
-              <h3 class="titleConteudo">Editar Mentoria</h3>
+              <h3 class="titleConteudo"><button onclick="mudarPag('mentorias.html')" class="voltar">
+                <span class="material-icons arrow">arrow_back</span></button>Editar Mentoria</h3>
             </div>
             <div class="conteudoExibido" >
               <div class="superiorNm">
@@ -132,12 +133,12 @@
               </div>
               <form class="formMentoria" id="formEditarMentoria">
                 <section class="sectionTitulo" >
-                  <label class="label" for="tituloMentoriaE">Titulo da mentoria</label>
-                  <input type="text" name="nome" id="tituloMentoriaE" class="nomeDaMentoria" />
+                  <label class="label" for="tituloMentoria">Titulo da mentoria</label>
+                  <input type="text" name="nome" id="tituloMentoria" class="nomeDaMentoria" />
                 </section>
                 <section class="sectionMentor">
-                  <label class="label" for="selectMentorE">Mentor:</label>
-                  <select id="selectMentoresE" class="selectMentor">
+                  <label class="label" for="selectMentor">Mentor:</label>
+                  <select id="selectMentores" class="selectMentor">
                     <option disabled selected value="null">Nenhum Mentor selecionado</option>
                     <option value="mentor">mentor</option>
                   </select>

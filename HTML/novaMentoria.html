@@ -124,7 +124,8 @@
               </div>
             </div>
             <div>
-              <h3 class="titleConteudo">Nova Mentoria</h3>
+              <h3 class="titleConteudo"><button onclick="mudarPag('mentorias.html')" class="voltar">
+                <span class="material-icons arrow">arrow_back</span></button>Nova Mentoria</h3>
             </div>
             <div class="conteudoExibido" >
               <div class="superiorNm">
@@ -137,16 +138,14 @@
                 </section>
                 <section class="sectionMentor">
                   <label class="label" for="mentor">Mentor:</label>
-                  <select id="selectMentores" class="selectMentor">
-                    <option disabled selected value="null">Nenhum Mentor selecionado</option>
-                    <option value="mentor">mentor</option>
+                  <select id="selectMentores" class="selectMentor">                
                   </select>
                 </section>
                 <section class="sectionComCheck" >
                   <label class="label">Status</label>
                   <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="switchNovaMentoria" checked >
-                    <label class="form-check-label" for="switchNovaMentoria"> Ativo</label>
+                    <input class="form-check-input" type="checkbox" role="switch" id="switchNovaMentoria">
+                    <label class="form-check-label">Ativo</label>
                   </div>
                 </section>
                 <section>

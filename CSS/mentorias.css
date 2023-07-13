@@ -114,4 +114,10 @@ td {
   border-radius: 15px;
   margin-top: 20px;
 }
+.add{
+  color: white;
+  position: absolute;
+  margin-top: 12px;
+  margin-left:  930px;
+}
 
