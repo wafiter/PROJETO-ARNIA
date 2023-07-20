@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nova Mentoria</title>
+    <title>Mentorias</title>
 
     <script defer src="/JS/app.js"></script>
     
     <link rel="stylesheet" href="/CSS/arquivo.css" />
-    <link rel="stylesheet" href="/CSS/mentorias.css">
+    <link rel="stylesheet" href="/CSS/turmas.css">
 
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -36,11 +36,12 @@
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
       crossorigin="anonymous"
     />
+    
 
 </head>
-<body class="mentorias" onload="PagianaEditarMentoria()" >
-  
-         <div class="conteiner col-12">
+<body class="turmas" onload="paginaTurmas()">
+    
+        <div class="conteiner col-12">
           <div class="menu col-2">
             <div class="title">
               <span class="mentor">mentor</span><span class="class">class</span>
@@ -124,37 +125,68 @@
               </div>
             </div>
             <div>
-              <h3 class="titleConteudo"><button onclick="mudarPag('mentorias.html')" class="voltar">
-                <span class="material-icons arrow">arrow_back</span></button>Editar Mentoria</h3>
+              <h3 class="titleConteudo">Turmas</h3>
             </div>
             <div class="conteudoExibido" >
-              <div class="superiorNm">
-                <p>Dados</p>
+              <div class="superior">
+                <input
+                  id="pesquisarMentorias"
+                  class="inputPesqisar"
+                  type="text"
+                  placeholder="Pesquise uma palavra-chave"
+                />
+                <button onclick="mudarPag('novaTurma.html')" class="btnAdd">Nova Turma</button>
+                <svg
+                  class="lupa"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-search"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                  />
+                </svg>
+                <svg
+                  class="add"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  fill="currentColor"
+                  class="bi bi-plus-lg"
+                  viewBox="0 0 16 16"
+                >
+                  <path fill-rule="evenodd"
+                    d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
+                  />
+                </svg>
               </div>
-              <form class="formMentoria" id="formEditarMentoria">
-                <section class="sectionTitulo" >
-                  <label class="label" for="tituloMentoria">Titulo da mentoria</label>
-                  <input type="text" name="nome" id="tituloMentoria" class="nomeDaMentoria" />
-                </section>
-                <section class="sectionMentor">
-                  <label class="label" for="selectMentor">Mentor:</label>
-                  <select id="selectMentores" class="selectMentor">
-                    <option disabled selected value="null">Nenhum Mentor selecionado</option>
-                    <option value="mentor">mentor</option>
-                  </select>
-                </section>
-                <section class="sectionComCheck" >
-                  <label class="label">Status</label>
-                  <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="switchNovaMentoria" checked >
-                    <label class="form-check-label" for="switchNovaMentoria"> Ativo</label>
-                  </div>
-                </section>
-                <section>
-                  <button type="submit" id="btnEditarMentoria" class="btnNovoMentor">Salvar Mudanças</button>
-                </section>
-              </form>
-             
+              <div class="tabela">
+                <table >
+                  <thead>
+                    <th class="turma">Turma</th>
+                    <th class="mento" >Mentor</th>
+                    <th class="mentoria">Mentoria</th>
+                    <th class="data">Data de Inicio</th>
+                    <th class="diaDaSemana">Dia da semana</th>
+                    <th class="horario">Horario</th>
+                    <th class="encontros">Encontros</th>
+                    <th class="acoes">Ações</th>
+                  </thead>
+                  <tbody id="tabelaTurmas">
+                 
+                  
+
+                  </tbody>
+                  
+                 
+                    
+                
+                  
+                </table>
+              </div>
             </div>
           </div>
         </div>

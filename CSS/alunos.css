@@ -1,0 +1,45 @@
+.nome{
+    width: 45%;
+    border-top-left-radius: 10px;
+}
+.email{
+    width: 45%;
+}
+.acoes{
+    width: 10%;
+    border-top-right-radius: 10px;
+}
+/*novo aluno*/
+.formAluno{
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+}
+section{
+    margin-left: 15px;
+    margin-top: 10px;
+    width: 280px;;
+}
+input, select{
+    width: 100%;
+    width: 100%;
+    padding: 5px;
+    border-radius: 10px;
+    border: solid 0.5px #9e9e9e;
+    
+}
+label{
+    color: #9e9e9e;
+    width: 100%;
+    font-size: small;
+}
+.btnNovoAluno{
+    width: 300px;
+    background-color: #482d83;
+    color: white;
+    padding: 8px;
+    border: none;
+    border-radius: 15px;
+    margin-top: 20px;
+
+}

@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nova Mentoria</title>
+    <title>Editar turma</title>
 
     <script defer src="/JS/app.js"></script>
     
     <link rel="stylesheet" href="/CSS/arquivo.css" />
-    <link rel="stylesheet" href="/CSS/mentorias.css">
+    <link rel="stylesheet" href="/CSS/turmas.css">
 
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -36,11 +36,12 @@
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
       crossorigin="anonymous"
     />
+    
 
 </head>
-<body class="mentorias" onload="PagianaEditarMentoria()" >
-  
-         <div class="conteiner col-12">
+<body class="turmas" onload="carregarEditarTurma()">
+    
+        <div class="conteiner col-12">
           <div class="menu col-2">
             <div class="title">
               <span class="mentor">mentor</span><span class="class">class</span>
@@ -124,38 +125,71 @@
               </div>
             </div>
             <div>
-              <h3 class="titleConteudo"><button onclick="mudarPag('mentorias.html')" class="voltar">
-                <span class="material-icons arrow">arrow_back</span></button>Editar Mentoria</h3>
+              <h3 class="titleConteudo"><button onclick="mudarPag('turmas.html')" class="voltar">
+                <span class="material-icons arrow">arrow_back</span></button>Editar Turma</h3>
             </div>
             <div class="conteudoExibido" >
               <div class="superiorNm">
-                <p>Dados</p>
+                <p>Mentoria</p>
               </div>
-              <form class="formMentoria" id="formEditarMentoria">
-                <section class="sectionTitulo" >
-                  <label class="label" for="tituloMentoria">Titulo da mentoria</label>
-                  <input type="text" name="nome" id="tituloMentoria" class="nomeDaMentoria" />
-                </section>
-                <section class="sectionMentor">
-                  <label class="label" for="selectMentor">Mentor:</label>
-                  <select id="selectMentores" class="selectMentor">
-                    <option disabled selected value="null">Nenhum Mentor selecionado</option>
-                    <option value="mentor">mentor</option>
+              <form id="formEditarTurma">
+                <section class="superior0" >
+                  <label for="mentoria">Mentorias</label>
+                  <select name="mentoria" id="selectMentorias">
+                    <option value="" selected disabled>Selecione a Mentoria</option>
+                    
                   </select>
                 </section>
-                <section class="sectionComCheck" >
-                  <label class="label">Status</label>
-                  <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" role="switch" id="switchNovaMentoria" checked >
-                    <label class="form-check-label" for="switchNovaMentoria"> Ativo</label>
-                  </div>
+                <section class="superior0 sp1" >
+                  <label for="mentor">Mentor</label>
+                  <select name="mentor" id="selectMentores">
+                    <option value="" selected disabled >Selecione o Mentor</option>
+                    
+                  </select>
                 </section>
-                <section>
-                  <button type="submit" id="btnEditarMentoria" class="btnNovoMentor">Salvar Mudanças</button>
+                <section class="dataf">
+                  <label for="dataInicio">Data de Inicio</label>
+                  <input type="date" id="dataInicio" >                  
                 </section>
+                <section class="dataf">
+                  <label for="diasDaSemana">Dia da semana</label>
+                  <select name="diasDaSemana" id="diasDaSemana">
+                    <option value="Segunda-Feira">Segunda-Feira</option>
+                    <option value="Terça-Feira">Terça-Feira</option>
+                    <option value="Quarta-Feira">Quarta-Feira</option>
+                    <option value="Quinta-Feira">Quinta-Feira</option>
+                    <option value="Sexta-Feira">Sexta-Feira</option>
+                    </select>
+                </section>
+                <section class="dataf" >
+                  <label for="horaDeInicio">Hora de Inicio</label>
+                  <input id="horaDeInicio" name="horaDeInicio" type="time">
+                </section>
+                <section class="dataf" >
+                  <label for="horaDeFim">Hora de Fim</label>
+                  <input id="horaDeFim" name="horaDeFim" type="time">
+                </section>
+             
+                <div class="superiorNm superiorNt">
+                  <p>Turma</p>
+                </div>
+                <section class="dadosForm1">
+                  <label for="turma">Turma</label>
+                  <input id="turma" name="turma" type="text"  placeholder="Turma">
+                </section>
+                <section class="dadosForm1"> 
+                  <label for="linkDaAula">Link da Aula</label>
+                  <input type="text" id="linkDaAula" name="linkDaAula">                  
+                </section>
+                <section class="dadosForm1">
+                  <label for="qtEncontros">Quantidade de encontros</label>
+                  <input type="text" id="qtEncontros" name="qtEncontros" placeholder="00">
+                </section>
+                
+                <button id="salvarturma" type="submit">Salvar</button>
               </form>
              
-            </div>
+           
           </div>
         </div>
 </body>

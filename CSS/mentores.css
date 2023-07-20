@@ -1,35 +1,15 @@
-#tabelaMentores {
-  width: 100%;
-  border-collapse: separate; /* Separa as bordas das células */
-  border-spacing: 0 5px;
-  font-size: small;
-}
-
-.nome {
+.nome{
   border-top-left-radius: 10px;
   width: 45%;
 }
-.e-mail {
+.e-mail{
   width: 45%;
 }
-.acoes {
+.acoes{
   border-top-right-radius: 10px;
   width: 10%;
 }
-th {
-  background-color: #482d83;
-  padding: 15px;
-  color: white;
-  font-weight: 100;
-}
-tr{
-    margin-bottom: 5px;
-}
-td{
-    padding: 15px;
-    background-color: #F5F5F5;
-   
-}
+
 .iconsCaneta{
     margin-right: 8px;
     background-color: white;
@@ -48,11 +28,6 @@ td{
 }
 /*novo mentor*/
 
-
-.superiorNm{
-    color: #482d83;
-    border-bottom: solid 2px #BDBDBD;
-}
 .formMentor{
     width: 60%;
     display: flex;
@@ -64,7 +39,7 @@ td{
     width: 300px;
     background-color: #482d83;
     color: white;
-    padding: 10px;
+    padding: 8px;
     border: none;
     border-radius: 15px;
     margin-top: 20px;
@@ -83,8 +58,7 @@ td{
 
 }
 
-section{
-        
+section{        
         width: 50%;
 }
 label{
