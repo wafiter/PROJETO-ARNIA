@@ -69,5 +69,11 @@ label{
     font-size: 10;
 }
 
-
-  
+.inputVerde {
+    width:100%;
+    border-radius: 10px;
+    padding: 10px;
+    border: solid 1px;
+    border-color: #0e8d38;
+    font-size: small;
+}

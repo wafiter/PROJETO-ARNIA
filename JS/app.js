@@ -1,7 +1,13 @@
 //Inserir usuario
-
 const nomeDeUsuario = document.getElementsByClassName("nomeUser");
 const emaildeUsuario = document.getElementsByClassName("emailUser");
+nomeDeUsuario.innerHTML = 'wafiter'
+emaildeUsuario.innerText = 'wafiter@gmail.com'
+
+//nomeDeUsuario.innerHTML = usuario.nome
+//emaildeUsuario.innerHTML = usuario.email
+
+
 
 //-formatar data
 function formatarDataParaBrasileiro(data) {
@@ -94,7 +100,6 @@ const buscarMentores = async (param = null) => {
   try {
     const mentoresApi = await fetch(`http://localhost:3000/mentores${pesquisar}`);
     mentores = await mentoresApi.json();
-    console.log(mentores);
     return mentores;
     
     
@@ -150,7 +155,7 @@ const getIdUrl = () => {
 
 const carregarEditarMentor = async () => {
   getIdUrl();
-  buscarMentorEditar(id);
+  await buscarMentorEditar(id);
   formDeEditarMtr(mentorEditavel);
 };
 
@@ -171,8 +176,8 @@ const salvarMentorEditado = async (MentorEditado) => {
 let mentorEditavel;
 const buscarMentorEditar = async (id) => {
   const resposta = await fetch(`http://localhost:3000/mentores/${id}`);
-  const mentorEditavel = await resposta.json();
-  return mentorEditavel;
+  mentorEditavel = await resposta.json();
+  return mentorEditavel  
 };
 
 //carregar e submit o formulario do editar mentor
@@ -193,6 +198,7 @@ if (formEditarMt != null) {
   });
 }
 const formDeEditarMtr = async (mentorEditavel) => {
+  console.log(mentorEditavel)
   document.getElementById("nome").value = mentorEditavel.nome;
   document.getElementById("email").value = mentorEditavel.email;
 };
@@ -232,12 +238,13 @@ const fazerTabelaMentorias = (mentoriasApi) => {
   let tabelaMentorias = document.getElementById("tabelaMentorias");
   tabelaMentorias.innerHTML =''
   mentoriasApi.forEach((element) => {
+    console.log(element)    
     tabelaMentorias.innerHTML =
       tabelaMentorias.innerHTML +
-      `
+            `
       <tr>
       <td>${element.titulo}</td>
-      <td>${element.mentor}</td>
+      <td>${element.mentor.nome}</td>
       <td><div class="${element.status}">${element.status}</div></td>
       <td>
         <button onclick="editarMentoria(${element.id})" class="material-icons iconsCaneta"> create </button>
@@ -250,8 +257,7 @@ const fazerTabelaMentorias = (mentoriasApi) => {
 
 //-Buscar mentores e colocar no select
 const construirSelectMentores = async () => {
-  await buscarMentores();
-  console.log("oi");
+  await buscarMentores();  
   fazerSelect(mentores);
 };
 
@@ -294,7 +300,7 @@ if (formNovaMentoria != null) {
     const buscaMentor = formNovaMentoria.elements["selectMentores"].value;
     let status = formNovaMentoria.elements["switchNovaMentoria"].checked;
     const mentor = await buscarMentorEditar(buscaMentor);
-
+    console.log(mentor)
     if (status == true) {
       status = "Ativo";
     } else {
@@ -302,7 +308,7 @@ if (formNovaMentoria != null) {
     }
     const mentoria = {
       titulo: tituloMentoria,
-      mentor: mentor,
+      mentor: mentor,       
       status: status,
     };
     mandarMentoriaApi(mentoria);
@@ -310,22 +316,23 @@ if (formNovaMentoria != null) {
 }
 
 //- Editar mentoria
+let mentoriaEditavel
 
 const editarMentoria = (id) => {
   window.location = `editarMentoria.html?id=${id}`;
 };
-const PagianaEditarMentoria = () => {
+const PagianaEditarMentoria = async () => {
   construirSelectMentores();
   getIdUrl();
-  mentoriaEditApi(id);
+  await mentoriaEditApi(id);
   formDeEditarMtria(mentoriaEditavel);
+  
 };
 
-let mentoriaEditavel;
 const mentoriaEditApi = async (id) => {
   const resposta = await fetch(`http://localhost:3000/mentorias/${id}`);
-  let mentoriaEditavel = await resposta.json();
-  return mentoriaEditavel;
+  mentoriaEditavel = await resposta.json();
+  return mentoriaEditavel  
 };
 
 //-submit do formulario de editar
@@ -370,8 +377,9 @@ const salvarMentoriaEditada = async (mentoriaEditada) => {
 //- jogar dados no formulario de editar mentoria
 
 const formDeEditarMtria = async (mentoriaEditavel) => {
+  console.log(mentoriaEditavel)
   document.getElementById("tituloMentoria").value = mentoriaEditavel.titulo;
-  document.getElementById("selectMentores").value = mentoriaEditavel.mentor;
+  document.getElementById("selectMentores").value = mentoriaEditavel.mentor.id
   if (mentoriaEditavel.status == "Ativo") {
     document.getElementById("switchNovaMentoria").checked = true;
   } else {
@@ -481,9 +489,12 @@ if (formNovaTurma != null) {
     const turma = formNovaTurma.elements["turma"].value;
     const link = formNovaTurma.elements["linkDaAula"].value;
     const qtEncontros = formNovaTurma.elements["qtEncontros"].value;
+    console.log(buscaMentor)
+    console.log(buscaMentoria)
     const mentor = await buscarMentorEditar(buscaMentor);
     const mentoria = await mentoriaEditApi(buscaMentoria);
-
+    console.log(mentor)
+    console.log(mentoria)
     const novaTurma = {
       mentoria: mentoria,
       mentor: mentor,
@@ -625,7 +636,7 @@ const fazerSelectTurmas = (turmas) => {
   turmas.forEach((element) => {
     selectTurmas.innerHTML =
       selectTurmas.innerHTML +
-      `<option value="${element.turma}">${element.turma}</option>`;
+      `<option value="${element.id}">${element.turma}</option>`;
   });
 };
 //- submit formulario novo aluno e mandar pra API
@@ -678,7 +689,7 @@ const paginaAlunos = async (pesquisar = null) => {
  
 };
 
-const buscarAlunosApi = async (parametro = null) => {
+const buscarAlunosApi = async (param = null) => {
   let pesquisar = '';
   if (param) {
     pesquisar = `?q=${param}`;
@@ -757,8 +768,10 @@ if (formEditarAluno != null) {
 
     const nome = formEditarAluno.elements["nome"].value;
     const email = formEditarAluno.elements["email"].value;
-    const turma = formEditarAluno.elements["selectTurmas"].value;
-
+    const buscaturma = formEditarAluno.elements["selectTurmas"].value;
+    const turma = await BuscaTurmaEditavel(buscaturma)
+    console.log('atumar')
+    console.log(turma)
     const aluno = {
       nome: nome,
       email: email,
