@@ -31,7 +31,7 @@ let buscarUsuario = async (dadoUser) => {
   let pesquisa = `?q=${dadoUser}`;
 
   try {
-    let usuario = await fetch(`http://https://api-projeto-arnia.onrender.comhost:3000/usuarios${pesquisa}`);
+    let usuario = await fetch(`https://api-projeto-arnia.onrender.com/usuarios${pesquisa}`);
     usuario = await usuario.json();
     console.log(usuario);
 
