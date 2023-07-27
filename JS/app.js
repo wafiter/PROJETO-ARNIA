@@ -1,6 +1,6 @@
 //Inserir usuario
-let nomeDoUsuarioLogado = localStorage.getItem("nomeDoUsuario");
-let emailDoUsuarioLogado = localStorage.getItem("emailDoUsuario");
+let nomeDoUsuarioLogado = https://api-projeto-arnia.onrender.comStorage.getItem("nomeDoUsuario");
+let emailDoUsuarioLogado = https://api-projeto-arnia.onrender.comStorage.getItem("emailDoUsuario");
 
 const dadosUsuario = () => {
   let nomeDeUsuario = document.querySelector(".nomeUser");
@@ -63,7 +63,7 @@ if (formNovoMentor != null) {
 
 const criarMentor = async (mentorAdd) => {
   try {
-    await fetch("http://localhost:3000/mentores", {
+    await fetch("http://https://api-projeto-arnia.onrender.comhost:3000/mentores", {
       method: "POST",
       headers: {
         Accept: "application/json, text/plain, */*",
@@ -97,7 +97,7 @@ const buscarMentores = async (param = null) => {
   }
   try {
     const mentoresApi = await fetch(
-      `http://localhost:3000/mentores${pesquisar}`
+      `http://https://api-projeto-arnia.onrender.comhost:3000/mentores${pesquisar}`
     );
     mentores = await mentoresApi.json();
     return mentores;
@@ -127,7 +127,7 @@ const fazerTabelaMentores = (mentores) => {
 const deletarMentor = async (id) => {
   try {
     console.log("deletou");
-    await fetch(`http://localhost:3000/mentores/${id}`, {
+    await fetch(`http://https://api-projeto-arnia.onrender.comhost:3000/mentores/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -160,7 +160,7 @@ const carregarEditarMentor = async () => {
 //enviar mentor editado na API
 
 const salvarMentorEditado = async (MentorEditado) => {
-  await fetch(`http://localhost:3000/mentores/${id}`, {
+  await fetch(`http://https://api-projeto-arnia.onrender.comhost:3000/mentores/${id}`, {
     method: "PUT",
     headers: {
       Accept: "application/json, text/plain, */*",
@@ -173,7 +173,7 @@ const salvarMentorEditado = async (MentorEditado) => {
 };
 let mentorEditavel;
 const buscarMentorEditar = async (id) => {
-  const resposta = await fetch(`http://localhost:3000/mentores/${id}`);
+  const resposta = await fetch(`http://https://api-projeto-arnia.onrender.comhost:3000/mentores/${id}`);
   mentorEditavel = await resposta.json();
   return mentorEditavel;
 };
@@ -223,7 +223,7 @@ const buscarMentoriasApi = async (param = null) => {
   }
   try {
     const mentoriasSTR = await fetch(
-      `http://localhost:3000/mentorias${pesquisar}`
+      `http://https://api-projeto-arnia.onrender.comhost:3000/mentorias${pesquisar}`
     );
     mentoriasApi = await mentoriasSTR.json();
   } catch (error) {
@@ -275,7 +275,7 @@ const fazerSelect = async (mentores) => {
 
 const mandarMentoriaApi = async (mentoria) => {
   try {
-    await fetch("http://localhost:3000/mentorias", {
+    await fetch("http://https://api-projeto-arnia.onrender.comhost:3000/mentorias", {
       method: "POST",
       headers: {
         Accept: "application/json, text/plain, */*",
@@ -328,7 +328,7 @@ const PagianaEditarMentoria = async () => {
 };
 
 const mentoriaEditApi = async (id) => {
-  const resposta = await fetch(`http://localhost:3000/mentorias/${id}`);
+  const resposta = await fetch(`http://https://api-projeto-arnia.onrender.comhost:3000/mentorias/${id}`);
   mentoriaEditavel = await resposta.json();
   return mentoriaEditavel;
 };
@@ -360,7 +360,7 @@ if (formEditarMentoria != null) {
 }
 //- salvar mentoria editada na API
 const salvarMentoriaEditada = async (mentoriaEditada) => {
-  await fetch(`http://localhost:3000/mentorias/${id}`, {
+  await fetch(`http://https://api-projeto-arnia.onrender.comhost:3000/mentorias/${id}`, {
     method: "PUT",
     headers: {
       Accept: "application/json, text/plain, */*",
@@ -390,7 +390,7 @@ const formDeEditarMtria = async (mentoriaEditavel) => {
 const deletarMentoria = async (id) => {
   try {
     console.log("deletou");
-    await fetch(`http://localhost:3000/mentorias/${id}`, {
+    await fetch(`http://https://api-projeto-arnia.onrender.comhost:3000/mentorias/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -446,7 +446,7 @@ const buscarTurmas = async (param = null) => {
     pesquisar = `?q=${param}`;
   }
   try {
-    const turmasApi = await fetch(`http://localhost:3000/turmas${pesquisar}`);
+    const turmasApi = await fetch(`http://https://api-projeto-arnia.onrender.comhost:3000/turmas${pesquisar}`);
     turmas = await turmasApi.json();
   } catch (error) {
     window.alert("Não Foi possivel carregar as Turmas");
@@ -509,7 +509,7 @@ if (formNovaTurma != null) {
 }
 const salvarTurma = async (novaTurma) => {
   try {
-    await fetch("http://localhost:3000/turmas", {
+    await fetch("http://https://api-projeto-arnia.onrender.comhost:3000/turmas", {
       method: "POST",
       headers: {
         Accept: "application/json, text/plain, */*",
@@ -526,7 +526,7 @@ const salvarTurma = async (novaTurma) => {
 const deletarTurma = async (id) => {
   try {
     console.log("deletou");
-    await fetch(`http://localhost:3000/turmas/${id}`, {
+    await fetch(`http://https://api-projeto-arnia.onrender.comhost:3000/turmas/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -552,7 +552,7 @@ const carregarEditarTurma = () => {
 };
 
 const BuscaTurmaEditavel = async (id) => {
-  const resposta = await fetch(`http://localhost:3000/turmas/${id}`);
+  const resposta = await fetch(`http://https://api-projeto-arnia.onrender.comhost:3000/turmas/${id}`);
   const turmaEditavel = await resposta.json();
 
   formDeEditarTurma(turmaEditavel);
@@ -608,7 +608,7 @@ if (formEditarTurma != null) {
   });
 }
 const salvarTurmaEditada = async (turmaEditada) => {
-  await fetch(`http://localhost:3000/turmas/${id}`, {
+  await fetch(`http://https://api-projeto-arnia.onrender.comhost:3000/turmas/${id}`, {
     method: "PUT",
     headers: {
       Accept: "application/json, text/plain, */*",
@@ -641,7 +641,7 @@ const fazerSelectTurmas = (turmas) => {
 
 const mandarAlunoApi = async (aluno) => {
   try {
-    await fetch("http://localhost:3000/alunos", {
+    await fetch("http://https://api-projeto-arnia.onrender.comhost:3000/alunos", {
       method: "POST",
       headers: {
         Accept: "application/json, text/plain, */*",
@@ -692,7 +692,7 @@ const buscarAlunosApi = async (param = null) => {
     pesquisar = `?q=${param}`;
   }
   try {
-    const alunos = await fetch(`http://localhost:3000/alunos${pesquisar}`);
+    const alunos = await fetch(`http://https://api-projeto-arnia.onrender.comhost:3000/alunos${pesquisar}`);
     alunosApi = await alunos.json();
     return alunosApi;
   } catch (error) {
@@ -722,7 +722,7 @@ const fazerTabelaAlunos = (alunosApi) => {
 
 const deletarAluno = async (id) => {
   try {
-    await fetch(`http://localhost:3000/alunos/${id}`, {
+    await fetch(`http://https://api-projeto-arnia.onrender.comhost:3000/alunos/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -745,7 +745,7 @@ const paginaEditarAluno = () => {
 };
 
 const alunoEditApi = async (id) => {
-  const resposta = await fetch(`http://localhost:3000/alunos/${id}`);
+  const resposta = await fetch(`http://https://api-projeto-arnia.onrender.comhost:3000/alunos/${id}`);
   const alunoEditavel = await resposta.json();
 
   carregarFormEdtAluno(alunoEditavel);
@@ -778,7 +778,7 @@ if (formEditarAluno != null) {
   });
 }
 const salvarAlunoEditado = async (aluno) => {
-  await fetch(`http://localhost:3000/alunos/${id}`, {
+  await fetch(`http://https://api-projeto-arnia.onrender.comhost:3000/alunos/${id}`, {
     method: "PUT",
     headers: {
       Accept: "application/json, text/plain, */*",

@@ -31,7 +31,7 @@ let buscarUsuario = async (dadoUser) => {
   let pesquisa = `?q=${dadoUser}`;
 
   try {
-    let usuario = await fetch(`http://localhost:3000/usuarios${pesquisa}`);
+    let usuario = await fetch(`http://https://api-projeto-arnia.onrender.comhost:3000/usuarios${pesquisa}`);
     usuario = await usuario.json();
     console.log(usuario);
 
@@ -39,8 +39,8 @@ let buscarUsuario = async (dadoUser) => {
       if (elem.senha == senha && elem.email == email) {
         const nomeDoUsuario = elem.nomeDeUsuario;
         const emailDoUsuario = elem.email;
-        localStorage.setItem("nomeDoUsuario", nomeDoUsuario);
-        localStorage.setItem("emailDoUsuario", emailDoUsuario);
+        https://api-projeto-arnia.onrender.comStorage.setItem("nomeDoUsuario", nomeDoUsuario);
+        https://api-projeto-arnia.onrender.comStorage.setItem("emailDoUsuario", emailDoUsuario);
         console.log(nomeDoUsuario);
         window.location = `HTML/mentores.html`;
       } else {
