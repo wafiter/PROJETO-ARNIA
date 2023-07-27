@@ -39,8 +39,8 @@ let buscarUsuario = async (dadoUser) => {
       if (elem.senha == senha && elem.email == email) {
         const nomeDoUsuario = elem.nomeDeUsuario;
         const emailDoUsuario = elem.email;
-        https://api-projeto-arnia.onrender.comStorage.setItem("nomeDoUsuario", nomeDoUsuario);
-        https://api-projeto-arnia.onrender.comStorage.setItem("emailDoUsuario", emailDoUsuario);
+        localStorage.setItem("nomeDoUsuario", nomeDoUsuario);
+        localStorage.setItem("emailDoUsuario", emailDoUsuario);
         console.log(nomeDoUsuario);
         window.location = `HTML/mentores.html`;
       } else {
