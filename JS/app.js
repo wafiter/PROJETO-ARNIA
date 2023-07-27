@@ -1,13 +1,14 @@
 //Inserir usuario
-const nomeDeUsuario = document.getElementsByClassName("nomeUser");
-const emaildeUsuario = document.getElementsByClassName("emailUser");
-nomeDeUsuario.innerHTML = 'wafiter'
-emaildeUsuario.innerText = 'wafiter@gmail.com'
+let nomeDoUsuarioLogado = localStorage.getItem("nomeDoUsuario");
+let emailDoUsuarioLogado = localStorage.getItem("emailDoUsuario");
 
-//nomeDeUsuario.innerHTML = usuario.nome
-//emaildeUsuario.innerHTML = usuario.email
-
-
+const dadosUsuario = () => {
+  let nomeDeUsuario = document.querySelector(".nomeUser");
+  let emaildeUsuario = document.querySelector(".emailUser");
+  nomeDeUsuario.innerHTML = nomeDoUsuarioLogado;
+  emaildeUsuario.innerHTML = emailDoUsuarioLogado;
+};
+dadosUsuario();
 
 //-formatar data
 function formatarDataParaBrasileiro(data) {
@@ -25,9 +26,7 @@ const mudarPag = (param) => {
 const onloadMenu = () => {
   let currentPage = document.body.className;
   let menuButtons = document.getElementsByClassName("iMenu");
-
   console.log(menuButtons);
-
   for (let i = 0; i < menuButtons.length; i++) {
     let button = menuButtons[i];
 
@@ -82,36 +81,35 @@ const criarMentor = async (mentorAdd) => {
 
 let mentores;
 const PaginaDeMentores = async (pesquisar = null) => {
- if(pesquisar){
-  await buscarMentores(pesquisar);
-  fazerTabelaMentores(mentores);
- }else{
-  await buscarMentores()
-  fazerTabelaMentores(mentores)
- }
-  
+  if (pesquisar) {
+    await buscarMentores(pesquisar);
+    fazerTabelaMentores(mentores);
+  } else {
+    await buscarMentores();
+    fazerTabelaMentores(mentores);
+  }
 };
 
 const buscarMentores = async (param = null) => {
-  let pesquisar = '';
+  let pesquisar = "";
   if (param) {
     pesquisar = `?q=${param}`;
   }
   try {
-    const mentoresApi = await fetch(`http://localhost:3000/mentores${pesquisar}`);
+    const mentoresApi = await fetch(
+      `http://localhost:3000/mentores${pesquisar}`
+    );
     mentores = await mentoresApi.json();
     return mentores;
-    
-    
   } catch (error) {
     console.log(error);
   }
 };
 const fazerTabelaMentores = (mentores) => {
   let tabela = document.getElementById("tabelaMentores");
-  tabela.innerHTML = ''
+  tabela.innerHTML = "";
   mentores.forEach((element) => {
-      tabela.innerHTML =
+    tabela.innerHTML =
       tabela.innerHTML +
       `<tr>
     <td>${element.nome}</td>
@@ -177,7 +175,7 @@ let mentorEditavel;
 const buscarMentorEditar = async (id) => {
   const resposta = await fetch(`http://localhost:3000/mentores/${id}`);
   mentorEditavel = await resposta.json();
-  return mentorEditavel  
+  return mentorEditavel;
 };
 
 //carregar e submit o formulario do editar mentor
@@ -198,7 +196,7 @@ if (formEditarMt != null) {
   });
 }
 const formDeEditarMtr = async (mentorEditavel) => {
-  console.log(mentorEditavel)
+  console.log(mentorEditavel);
   document.getElementById("nome").value = mentorEditavel.nome;
   document.getElementById("email").value = mentorEditavel.email;
 };
@@ -208,24 +206,25 @@ const formDeEditarMtr = async (mentorEditavel) => {
 let mentoriasApi;
 
 const paginaMentorias = async (pesquisar = null) => {
-  if(pesquisar){
+  if (pesquisar) {
     await buscarMentoriasApi(pesquisar);
     fazerTabelaMentorias(mentoriasApi);
-  }else{
+  } else {
     await buscarMentoriasApi();
-  fazerTabelaMentorias(mentoriasApi);
+    fazerTabelaMentorias(mentoriasApi);
   }
-  
 };
 //- busca mentorias na API
 
 const buscarMentoriasApi = async (param = null) => {
-  let pesquisar = '';
+  let pesquisar = "";
   if (param) {
     pesquisar = `?q=${param}`;
   }
   try {
-    const mentoriasSTR = await fetch(`http://localhost:3000/mentorias${pesquisar}`);
+    const mentoriasSTR = await fetch(
+      `http://localhost:3000/mentorias${pesquisar}`
+    );
     mentoriasApi = await mentoriasSTR.json();
   } catch (error) {
     console.log(error);
@@ -236,12 +235,12 @@ const buscarMentoriasApi = async (param = null) => {
 
 const fazerTabelaMentorias = (mentoriasApi) => {
   let tabelaMentorias = document.getElementById("tabelaMentorias");
-  tabelaMentorias.innerHTML =''
+  tabelaMentorias.innerHTML = "";
   mentoriasApi.forEach((element) => {
-    console.log(element)    
+    console.log(element);
     tabelaMentorias.innerHTML =
       tabelaMentorias.innerHTML +
-            `
+      `
       <tr>
       <td>${element.titulo}</td>
       <td>${element.mentor.nome}</td>
@@ -257,7 +256,7 @@ const fazerTabelaMentorias = (mentoriasApi) => {
 
 //-Buscar mentores e colocar no select
 const construirSelectMentores = async () => {
-  await buscarMentores();  
+  await buscarMentores();
   fazerSelect(mentores);
 };
 
@@ -300,7 +299,7 @@ if (formNovaMentoria != null) {
     const buscaMentor = formNovaMentoria.elements["selectMentores"].value;
     let status = formNovaMentoria.elements["switchNovaMentoria"].checked;
     const mentor = await buscarMentorEditar(buscaMentor);
-    console.log(mentor)
+    console.log(mentor);
     if (status == true) {
       status = "Ativo";
     } else {
@@ -308,7 +307,7 @@ if (formNovaMentoria != null) {
     }
     const mentoria = {
       titulo: tituloMentoria,
-      mentor: mentor,       
+      mentor: mentor,
       status: status,
     };
     mandarMentoriaApi(mentoria);
@@ -316,7 +315,7 @@ if (formNovaMentoria != null) {
 }
 
 //- Editar mentoria
-let mentoriaEditavel
+let mentoriaEditavel;
 
 const editarMentoria = (id) => {
   window.location = `editarMentoria.html?id=${id}`;
@@ -326,13 +325,12 @@ const PagianaEditarMentoria = async () => {
   getIdUrl();
   await mentoriaEditApi(id);
   formDeEditarMtria(mentoriaEditavel);
-  
 };
 
 const mentoriaEditApi = async (id) => {
   const resposta = await fetch(`http://localhost:3000/mentorias/${id}`);
   mentoriaEditavel = await resposta.json();
-  return mentoriaEditavel  
+  return mentoriaEditavel;
 };
 
 //-submit do formulario de editar
@@ -377,9 +375,9 @@ const salvarMentoriaEditada = async (mentoriaEditada) => {
 //- jogar dados no formulario de editar mentoria
 
 const formDeEditarMtria = async (mentoriaEditavel) => {
-  console.log(mentoriaEditavel)
+  console.log(mentoriaEditavel);
   document.getElementById("tituloMentoria").value = mentoriaEditavel.titulo;
-  document.getElementById("selectMentores").value = mentoriaEditavel.mentor.id
+  document.getElementById("selectMentores").value = mentoriaEditavel.mentor.id;
   if (mentoriaEditavel.status == "Ativo") {
     document.getElementById("switchNovaMentoria").checked = true;
   } else {
@@ -409,10 +407,10 @@ const deletarMentoria = async (id) => {
 
 let turmas;
 const paginaTurmas = async (pesquisar = null) => {
-  if(pesquisar){
+  if (pesquisar) {
     await buscarTurmas(pesquisar);
     fazerTabelaTurmas(turmas);
-  }else{
+  } else {
     await buscarTurmas();
     fazerTabelaTurmas(turmas);
   }
@@ -443,7 +441,7 @@ const fazerTabelaTurmas = (turmas) => {
   });
 };
 const buscarTurmas = async (param = null) => {
-  let pesquisar = '';
+  let pesquisar = "";
   if (param) {
     pesquisar = `?q=${param}`;
   }
@@ -489,12 +487,12 @@ if (formNovaTurma != null) {
     const turma = formNovaTurma.elements["turma"].value;
     const link = formNovaTurma.elements["linkDaAula"].value;
     const qtEncontros = formNovaTurma.elements["qtEncontros"].value;
-    console.log(buscaMentor)
-    console.log(buscaMentoria)
+    console.log(buscaMentor);
+    console.log(buscaMentoria);
     const mentor = await buscarMentorEditar(buscaMentor);
     const mentoria = await mentoriaEditApi(buscaMentoria);
-    console.log(mentor)
-    console.log(mentoria)
+    console.log(mentor);
+    console.log(mentoria);
     const novaTurma = {
       mentoria: mentoria,
       mentor: mentor,
@@ -679,18 +677,17 @@ if (formNovoAluno != null) {
 let alunosApi;
 
 const paginaAlunos = async (pesquisar = null) => {
-  if(pesquisar){
+  if (pesquisar) {
     await buscarAlunosApi(pesquisar);
     fazerTabelaAlunos(alunosApi);
-  }else{
+  } else {
     await buscarAlunosApi();
     fazerTabelaAlunos(alunosApi);
   }
- 
 };
 
 const buscarAlunosApi = async (param = null) => {
-  let pesquisar = '';
+  let pesquisar = "";
   if (param) {
     pesquisar = `?q=${param}`;
   }
@@ -769,9 +766,9 @@ if (formEditarAluno != null) {
     const nome = formEditarAluno.elements["nome"].value;
     const email = formEditarAluno.elements["email"].value;
     const buscaturma = formEditarAluno.elements["selectTurmas"].value;
-    const turma = await BuscaTurmaEditavel(buscaturma)
-    console.log('atumar')
-    console.log(turma)
+    const turma = await BuscaTurmaEditavel(buscaturma);
+    console.log("atumar");
+    console.log(turma);
     const aluno = {
       nome: nome,
       email: email,
@@ -794,120 +791,53 @@ const salvarAlunoEditado = async (aluno) => {
 
 //- Barras de pesquisar
 //-Mentores
-const pesquisarMentores = document.getElementById('pesquisarMentores')
-  if(pesquisarMentores != null){
-    pesquisarMentores.addEventListener("keyup", (e) => {        
-      const text = pesquisarMentores.value;
-      if (text === "") {
-        PaginaDeMentores();
-      } else if (e.key === "Enter") {
-        PaginaDeMentores(text);        
-      }    
-  }); 
-  }
+const pesquisarMentores = document.getElementById("pesquisarMentores");
+if (pesquisarMentores != null) {
+  pesquisarMentores.addEventListener("keyup", (e) => {
+    const text = pesquisarMentores.value;
+    if (text === "") {
+      PaginaDeMentores();
+    } else if (e.key === "Enter") {
+      PaginaDeMentores(text);
+    }
+  });
+}
 
 //-Mentorias
-const pesquisarMentoria = document.getElementById('pesquisarMentoria')
-if(pesquisarMentoria != null){
-  pesquisarMentoria.addEventListener('keyup', (e) =>{
-     const text = pesquisarMentoria.value
-  if(text === ''){
-    paginaMentorias()
-  }else if (e.key === 'Enter'){
-    paginaMentorias(text)
-  }
-    })
+const pesquisarMentoria = document.getElementById("pesquisarMentoria");
+if (pesquisarMentoria != null) {
+  pesquisarMentoria.addEventListener("keyup", (e) => {
+    const text = pesquisarMentoria.value;
+    if (text === "") {
+      paginaMentorias();
+    } else if (e.key === "Enter") {
+      paginaMentorias(text);
+    }
+  });
 }
 
 //- Turmas
-const pesquisarTurmas = document.getElementById('pesquisarTurmas')
-if(pesquisarTurmas != null){
-  pesquisarTurmas.addEventListener('keyup', (e) =>{
-    const text = pesquisarTurmas.value
-    if(text === ''){
-      paginaTurmas()
-    }else if (e.key === 'Enter'){
-      paginaTurmas(text)
+const pesquisarTurmas = document.getElementById("pesquisarTurmas");
+if (pesquisarTurmas != null) {
+  pesquisarTurmas.addEventListener("keyup", (e) => {
+    const text = pesquisarTurmas.value;
+    if (text === "") {
+      paginaTurmas();
+    } else if (e.key === "Enter") {
+      paginaTurmas(text);
     }
-  })
+  });
 }
 
 //- Alunos
-const pesquisarAlunos = document.getElementById('pesquisarAlunos')
-if(pesquisarAlunos != null){
-  pesquisarAlunos.addEventListener('keyup', (e) =>{
-    const text = pesquisarAlunos.value
-    if(text === ''){
-      paginaAlunos()      
-    }else if(e.key === 'Enter'){
-      paginaAlunos(text)
+const pesquisarAlunos = document.getElementById("pesquisarAlunos");
+if (pesquisarAlunos != null) {
+  pesquisarAlunos.addEventListener("keyup", (e) => {
+    const text = pesquisarAlunos.value;
+    if (text === "") {
+      paginaAlunos();
+    } else if (e.key === "Enter") {
+      paginaAlunos(text);
     }
-  } )
+  });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
