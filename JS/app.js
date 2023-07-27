@@ -1,6 +1,6 @@
 //Inserir usuario
-let nomeDoUsuarioLogado = https://api-projeto-arnia.onrender.comStorage.getItem("nomeDoUsuario");
-let emailDoUsuarioLogado = https://api-projeto-arnia.onrender.comStorage.getItem("emailDoUsuario");
+let nomeDoUsuarioLogado = localStorage.getItem ("nomeDoUsuario");
+let emailDoUsuarioLogado = localStorage.getItem ("emailDoUsuario");
 
 const dadosUsuario = () => {
   let nomeDeUsuario = document.querySelector(".nomeUser");
